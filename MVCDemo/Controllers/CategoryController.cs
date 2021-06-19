@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MVCDemo.Data;
 using MVCDemo.Models;
+using ReflectionIT.Mvc.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,11 @@ namespace MVCDemo.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            IEnumerable<Category> objList = _db.Category;
-            return View(objList);
+            IEnumerable<Category> objList = _db.Category.AsNoTracking().OrderBy(dis => dis.DisplayOrder);
+            var model = PagingList.Create(objList, 4, page);
+            return View(model);
         }
         // GET - CREATE
         public IActionResult Create()

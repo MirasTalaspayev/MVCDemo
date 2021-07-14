@@ -30,7 +30,6 @@ namespace MVCDemo
             options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
-            services.AddPaging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

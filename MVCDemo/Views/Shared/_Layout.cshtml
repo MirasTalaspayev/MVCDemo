@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var e = Enum.GetValues(typeof(ConsoleColor));
+    Random random = new Random();
+    var color = (ConsoleColor)e.GetValue(random.Next(e.Length));
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,7 +13,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body style="background-color:@color;">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -35,7 +41,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="background-color:#fff;">
         <div class="container">
             &copy; 2021 - MVCDemo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

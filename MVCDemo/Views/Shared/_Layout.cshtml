@@ -1,10 +1,4 @@
-﻿@{
-    var e = Enum.GetValues(typeof(ConsoleColor));
-    Random random = new Random();
-    var color = (ConsoleColor)e.GetValue(random.Next(e.Length));
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,7 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body style="background-color:@color;">
+<body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">

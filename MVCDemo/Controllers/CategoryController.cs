@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using MVCDemo.Data;
 using MVCDemo.Models;
 using ReflectionIT.Mvc.Paging;
@@ -33,13 +34,9 @@ namespace MVCDemo.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Category obj)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Category.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(obj);
+            _db.Category.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
         // GET - EDIT
         public IActionResult Edit(int? id)
@@ -62,13 +59,9 @@ namespace MVCDemo.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Category obj)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Category.Update(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(obj);
+            _db.Category.Update(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET - DELETE
@@ -87,17 +80,12 @@ namespace MVCDemo.Controllers
 
             return View(obj);
         }
-        // POST - Edit
+        // POST - DELETE
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
             var obj = _db.Category.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-
             _db.Category.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");

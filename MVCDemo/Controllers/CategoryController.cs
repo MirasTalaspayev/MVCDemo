@@ -64,7 +64,7 @@ namespace MVCDemo.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET - DELETE
+        // POST - DELETE
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -78,17 +78,9 @@ namespace MVCDemo.Controllers
                 return NotFound();
             }
 
-            return View(obj);
-        }
-        // POST - DELETE
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? id)
-        {
-            var obj = _db.Category.Find(id);
             _db.Category.Remove(obj);
             _db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

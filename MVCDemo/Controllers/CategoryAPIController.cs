@@ -35,7 +35,7 @@ namespace MVCDemo.Controllers
             _db.SaveChanges();
         }
         [HttpPost]
-        public void Create([FromBody]Category category)
+        public StatusCodeResult Create([FromBody]Category category)
         {
             var temp = new Category()
             {
@@ -44,6 +44,7 @@ namespace MVCDemo.Controllers
             };
             _db.Category.Add(temp);
             _db.SaveChanges();
+            return Ok();
         }
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] Category category)

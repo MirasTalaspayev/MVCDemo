@@ -57,7 +57,7 @@ namespace MVCDemo
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=category}/{action=Index}/{id?}");
+                    pattern: "{controller=home}/{action=Index}/{id?}");
             });
         }
     }
